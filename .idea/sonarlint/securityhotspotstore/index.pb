@@ -24,3 +24,7 @@ U
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+U
+%.mvn/wrapper/maven-wrapper.properties,3\2\32e074f71d16c1e88ac02aa83592ca6ad1fd98a8
+X
+(.mvn/wrapper/MavenWrapperDownloader.java,6\1\61ba2d75f3f04e099148e7a84c6a909f2000ff04
