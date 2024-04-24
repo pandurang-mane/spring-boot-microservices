@@ -15,3 +15,12 @@ G
 acatalog-service/src/test/java/com/pandurang/bookstore/catalog/CatalogServiceApplicationTests.java,3\b\3b39f110c5a22bca3c6b7ade871a96c2737bbaa1
 ê
 `catalog-service/src/test/java/com/pandurang/bookstore/catalog/TestCatalogServiceApplication.java,3\2\32f22c8b396d7a85180f888f7d5488c4ab6364f4
+Ç
+Rcatalog-service/src/test/java/com/pandurang/bookstore/catalog/ContainerConfig.java,8\3\8356d8a11c241a00071dd5197aa2d55374827e36
+S
+#deployment/docker-compose/infra.yml,a\2\a2e5498f1c56749695e0f6f27c360f617d794a24
+U
+%.github/workflows/catalog-service.yml,b\a\ba85120697573782861052244dca97477c1feed3
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
