@@ -12,6 +12,7 @@ tasks:
   default:
     cmds:
       - task: test
+
   test:
     deps: [format]
     cmds:
