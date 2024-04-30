@@ -15,10 +15,12 @@
 	<description>Order Service</description>
 	<properties>
 		<java.version>21</java.version>
-		<spring-cloud.version>2023.0.1</spring-cloud.version>
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>pandurangmane/bookstore-${project.artifactId}</dockerImageName>
+		<instancio.version>4.5.0</instancio.version>
+		<wiremock.version>3.5.2</wiremock.version>
+		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,8 +48,9 @@
 			<artifactId>flyway-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-spring-boot3</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 
 		<dependency>
@@ -111,18 +114,35 @@
 			<artifactId>rest-assured</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.instancio</groupId>
+			<artifactId>instancio-junit</artifactId>
+			<version>${instancio.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.wiremock</groupId>
+			<artifactId>wiremock-standalone</artifactId>
+			<version>${wiremock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.wiremock.integrations.testcontainers</groupId>
+			<artifactId>wiremock-testcontainers-module</artifactId>
+			<version>${wiremock-testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.javacrumbs.shedlock</groupId>
+			<artifactId>shedlock-spring</artifactId>
+			<version>5.13.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.javacrumbs.shedlock</groupId>
+			<artifactId>shedlock-provider-jdbc-template</artifactId>
+			<version>5.13.0</version>
+		</dependency>
 	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<build>
 		<plugins>

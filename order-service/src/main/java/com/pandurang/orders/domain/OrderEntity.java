@@ -4,7 +4,6 @@ import com.pandurang.orders.domain.models.Address;
 import com.pandurang.orders.domain.models.Customer;
 import com.pandurang.orders.domain.models.OrderStatus;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -29,22 +28,28 @@ class OrderEntity {
     @Embedded
     @AttributeOverrides(
             value = {
-                    @AttributeOverride(name = "name", column = @Column(name = "customer_name", nullable = false)),
-                    @AttributeOverride(name = "email", column = @Column(name = "customer_email", nullable = false)),
-                    @AttributeOverride(name = "phone", column = @Column(name = "customer_phone", nullable = false))
-            }
-    )
+                @AttributeOverride(name = "name", column = @Column(name = "customer_name", nullable = false)),
+                @AttributeOverride(name = "email", column = @Column(name = "customer_email", nullable = false)),
+                @AttributeOverride(name = "phone", column = @Column(name = "customer_phone", nullable = false))
+            })
     private Customer customer;
 
     @Embedded
-    @AttributeOverrides(value = {
-            @AttributeOverride(name = "addressLine1", column = @Column(name = "delivery_address_line1", nullable = false)),
-            @AttributeOverride(name = "addressLine2", column = @Column(name = "delivery_address_line2")),
-            @AttributeOverride(name = "city", column = @Column(name = "delivery_address_city", nullable = false)),
-            @AttributeOverride(name = "state", column = @Column(name = "delivery_address_state", nullable = false)),
-            @AttributeOverride(name = "zipCode", column = @Column(name = "delivery_address_zip_code", nullable = false)),
-            @AttributeOverride(name = "country", column = @Column(name = "delivery_address_country", nullable = false))
-    } )
+    @AttributeOverrides(
+            value = {
+                @AttributeOverride(
+                        name = "addressLine1",
+                        column = @Column(name = "delivery_address_line1", nullable = false)),
+                @AttributeOverride(name = "addressLine2", column = @Column(name = "delivery_address_line2")),
+                @AttributeOverride(name = "city", column = @Column(name = "delivery_address_city", nullable = false)),
+                @AttributeOverride(name = "state", column = @Column(name = "delivery_address_state", nullable = false)),
+                @AttributeOverride(
+                        name = "zipCode",
+                        column = @Column(name = "delivery_address_zip_code", nullable = false)),
+                @AttributeOverride(
+                        name = "country",
+                        column = @Column(name = "delivery_address_country", nullable = false))
+            })
     private Address deliveryAddress;
 
     @Enumerated(EnumType.STRING)

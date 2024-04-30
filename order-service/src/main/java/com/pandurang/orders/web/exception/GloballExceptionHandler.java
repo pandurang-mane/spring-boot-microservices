@@ -1,12 +1,12 @@
 package com.pandurang.orders.web.exception;
 
+import com.pandurang.orders.domain.InvalidOrderException;
 import com.pandurang.orders.domain.OrderNotFoundException;
+import jakarta.annotation.Nullable;
 import java.net.URI;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
-
-import jakarta.annotation.Nullable;
 import org.springframework.http.*;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -45,6 +45,17 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problemDetail;
     }
 
+    @ExceptionHandler(InvalidOrderException.class)
+    ProblemDetail handleInvalidOrderException(InvalidOrderException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+        problemDetail.setTitle("Invalid Order Creation request");
+        problemDetail.setType(BAD_REQUEST_TYPE);
+        problemDetail.setProperty("service", SERVICE_NAME);
+        problemDetail.setProperty("error_category", "generic");
+        problemDetail.setProperty("timestamp", Instant.now());
+        return problemDetail;
+    }
+
     @Override
     @Nullable protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -53,7 +64,8 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.add(errorMessage);
         });
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Invalid request payload");
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Invalid request payload");
         problemDetail.setTitle("Bad Request");
         problemDetail.setType(BAD_REQUEST_TYPE);
         problemDetail.setProperty("errors", errors);
@@ -62,5 +74,4 @@ class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         problemDetail.setProperty("timestamp", Instant.now());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problemDetail);
     }
-
 }

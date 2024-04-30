@@ -1,4 +1,3 @@
 package com.pandurang.orders.domain.models;
 
-public record CreatedOrderResponse(String orderNumber) {
-}
+public record CreatedOrderResponse(String orderNumber) {}

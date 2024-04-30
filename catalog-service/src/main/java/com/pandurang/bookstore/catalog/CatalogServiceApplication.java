@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 public class CatalogServiceApplication {
 
     public static void main(String[] args) {
-        System.out.println("Github actions testing");
         SpringApplication.run(CatalogServiceApplication.class, args);
     }
 }
