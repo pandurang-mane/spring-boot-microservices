@@ -46,7 +46,6 @@ class OrderMapper {
                 order.getDeliveryAddress(),
                 order.getStatus(),
                 order.getComments(),
-                order.getCreatedAt()
-        );
+                order.getCreatedAt());
     }
 }
