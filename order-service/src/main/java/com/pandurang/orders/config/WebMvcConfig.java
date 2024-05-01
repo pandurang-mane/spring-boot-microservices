@@ -15,5 +15,4 @@ class WebMvcConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns("*")
                 .allowCredentials(false);
     }
-
 }
