@@ -1,9 +1,9 @@
-name: Order Service
+name: Notification Service
 
 on:
   push:
     paths:
-      - order-service/**
+      - notification-service/**
     branches:
       - '**'
 
@@ -12,8 +12,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      working-directory: ./order-service
-      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-order-service
+      working-directory: ./notification-service
+      DOCKER_IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/bookstore-notification-service
     defaults:
       run:
         working-directory: ${{ env.working-directory }}
